@@ -40,25 +40,30 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td class="align-middle text-center"></td>
-											<td class="align-middle">
-												<button class="btn btn-link text-secondary mb-0">
-													<i class="fa fa-ellipsis-v text-xs"></i>
-												</button>
-											</td>
-										</tr>
-										<tr></tr>
+										{% for u in tab %}
+
+											<tr>
+												<td>{{u.idProp}}</td>
+												<td>{{u.nom}}</td>
+												<td>{{u.numero}}</td>
+												<td>{{u.nbEtoile}}</td>
+												<td class="align-middle text-center"></td>
+												<td class="align-middle">
+													<button class="btn btn-link text-secondary mb-0">
+														<i class="fa fa-ellipsis-v text-xs"></i>
+													</button>
+												</td>
+											</tr>
+											<tr></tr>
+										{% endfor %}
+
 									</tbody>
-								</table>
-							</div>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 
-		{% endblock %}
+	{% endblock %}
