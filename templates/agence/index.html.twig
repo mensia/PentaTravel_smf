@@ -46,6 +46,7 @@
 												<td>{{u.idProp}}</td>
 												<td>{{u.nom}}</td>
 												<td>{{u.numero}}</td>
+												<td>{{u.Address}}</td>
 												<td>{{u.nbEtoile}}</td>
 												<td class="align-middle text-center"></td>
 												<td class="align-middle">
@@ -53,6 +54,7 @@
 														<i class="fa fa-ellipsis-v text-xs"></i>
 													</button>
 												</td>
+											<td><a href="{{ path('AgenceDeletee',{'id':u.id}) }}">Delete</a></td>
 											</tr>
 											<tr></tr>
 										{% endfor %}
