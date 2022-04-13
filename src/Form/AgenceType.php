@@ -12,7 +12,7 @@ class AgenceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('idProp')
+            // ->add('idProp')
             ->add('nom')
             ->add('numero')
             ->add('nbEtoile')

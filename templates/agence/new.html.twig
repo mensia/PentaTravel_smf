@@ -6,11 +6,78 @@
 {% block body %}
 
 	{{ form_start(AgenceForm) }}
-	{{form_row(AgenceForm)}}
-	{# <button type="submit">ss</button> #}
-	<button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>
+	{# {{form_row(AgenceForm)}} #}
 
+	<div class="form-group row">
+		<label for="fname" class="col-sm-3 text-end control-label col-form-label">Name</label>
+		<div class="col-sm-9">
+			{{form_widget(AgenceForm.nom)}}
+			{{form_errors(AgenceForm.nom)}}
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="lname" class="col-sm-3 text-end control-label col-form-label">Address</label>
+		<div class="col-sm-9">
+			{{form_widget(AgenceForm.address)}}
+			{{form_errors(AgenceForm.address)}}
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="lname" class="col-sm-3 text-end control-label col-form-label">numero</label>
+		<div class="col-sm-9">
+			{{form_widget(AgenceForm.numero)}}
+			{{form_errors(AgenceForm.numero)}}
+		</div>
+	</div>
+
+	{# <div class="form-group row">
+	
+		<div class="form-group">
+			<input  type="text" class="form-control input-rounded" placeholder="Nom ">{{form_widget(AgenceForm.nom)}}
+		</div>
+	
+	
+		<div class="form-group">
+			<input {{form_widget(AgenceForm.numero)}} type="text" class="form-control input-rounded" placeholder="numero ">
+		</div>
+		<div class="form-group">
+			<input {{form_widget(AgenceForm.address)}} type="text" class="form-control input-rounded" placeholder="address ">
+		</div>
+		{# <div class="col-lg-4"> #}
+	<div class="card">
+		<div class="card-title">
+			<h4>Etoile</h4>
+			<div class="card-title-right-icon">
+				<ul></ul>
+			</div>
+		</div>
+		<div class="rating2">
+			<select {{form_widget(AgenceForm.nbEtoile)}} id="example-fontawesome" name="rating" autocomplete="off">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>
+		</div>
+	</div>
+	<button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Submit</button>
+
+
+	<!-- jquery vendor -->
+	<script src="assets/js/lib/jquery.min.js"></script>
+	<script src="assets/js/lib/jquery.nanoscroller.min.js"></script>
+	<!-- nano scroller -->
+	<script src="assets/js/lib/menubar/sidebar.js"></script>
+	<script src="assets/js/lib/preloader/pace.min.js"></script>
+	<!-- sidebar -->
+
+	<!-- bootstrap -->
+
+
+	<script src="assets/js/lib/barRating/jquery.barrating.js"></script>
+	<script src="assets/js/lib/barRating/barRating.init.js"></script>
+	<script src="assets/js/lib/bootstrap.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
 	{{form_end(AgenceForm)}}
-
-
 {% endblock %}

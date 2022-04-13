@@ -56,6 +56,7 @@ class AgenceController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
+            $Agence->setIdProp(0);
 
             $entityManager->persist($Agence);
 
@@ -69,14 +70,14 @@ class AgenceController extends AbstractController
         ]);
     }
 
-     /**
+    /**
      * @Route ("/agence/delete/{id}",name="agenceDelete")
      */
     public function Agencedeletee($id)
     {
-        $repository=$this->getDoctrine()->getRepository(Agence::class);
-        $Agence=$repository->find($id);
-        $em=$this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository(Agence::class);
+        $Agence = $repository->find($id);
+        $em = $this->getDoctrine()->getManager();
         $em->remove($Agence);
         $em->flush();
         return $this->redirectToRoute('app_agence');
