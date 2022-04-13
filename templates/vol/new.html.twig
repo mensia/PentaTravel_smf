@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AgenceController!
+{% endblock %}
+
+{% block body %}
+
+	{{ form_start(VolForm) }}
+	{# {{form_row(VolForm)}} #}
+
+	<div class="form-group row">
+		<label for="fname" class="col-sm-3 text-end control-label col-form-label">capacity</label>
+		<div class="col-sm-9">
+			{{form_widget(VolForm.capacity)}}
+			{{form_errors(VolForm.capacity)}}
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="lname" class="col-sm-3 text-end control-label col-form-label">prix</label>
+		<div class="col-sm-9">
+			{{form_widget(VolForm.prix)}}
+			{{form_errors(VolForm.prix)}}
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="lname" class="col-sm-3 text-end control-label col-form-label">company</label>
+		<div class="col-sm-9">
+			{{form_widget(VolForm.company)}}
+			{{form_errors(VolForm.company)}}
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="lname" class="col-sm-3 text-end control-label col-form-label">depart</label>
+		<div class="col-sm-9">
+			{{form_widget(VolForm.depart)}}
+			{{form_errors(VolForm.depart)}}
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="lname" class="col-sm-3 text-end control-label col-form-label">destination</label>
+		<div class="col-sm-9">
+			{{form_widget(VolForm.destination)}}
+			{{form_errors(VolForm.destination)}}
+		</div>
+	</div>
+
+	<button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Submit</button>
+
+
+	<!-- jquery vendor -->
+	<script src="assets/js/lib/jquery.min.js"></script>
+	<script src="assets/js/lib/jquery.nanoscroller.min.js"></script>
+	<!-- nano scroller -->
+	<script src="assets/js/lib/menubar/sidebar.js"></script>
+	<script src="assets/js/lib/preloader/pace.min.js"></script>
+	<!-- sidebar -->
+
+	<!-- bootstrap -->
+
+
+	<script src="assets/js/lib/barRating/jquery.barrating.js"></script>
+	<script src="assets/js/lib/barRating/barRating.init.js"></script>
+	<script src="assets/js/lib/bootstrap.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
+	{{form_end(VolForm)}}
+{% endblock %}

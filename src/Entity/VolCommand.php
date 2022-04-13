@@ -36,12 +36,12 @@ class VolCommand
     private $prix;
 
     /**
-     * @ORM\ManyToOne(targetEntity=agence::class, inversedBy="volcommands")
+     * @ORM\ManyToOne(targetEntity=Agence::class, inversedBy="volcommands")
      */
     private $agence;
 
     /**
-     * @ORM\ManyToOne(targetEntity=vol::class, inversedBy="volcommands")
+     * @ORM\ManyToOne(targetEntity=Vol::class, inversedBy="volcommands")
      */
     private $Vol;
 

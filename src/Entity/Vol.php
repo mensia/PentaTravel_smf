@@ -23,12 +23,6 @@ class Vol
      */
     private $id;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_agence", type="integer", nullable=false)
-     */
-    private $idAgence;
 
     /**
      * @var int
@@ -73,12 +67,12 @@ class Vol
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity=agence::class, inversedBy="vols")
+     * @ORM\ManyToOne(targetEntity=Agence::class, inversedBy="vols")
      */
     private $agence;
 
     /**
-     * @ORM\OneToMany(targetEntity=Volcommand::class, mappedBy="Vol")
+     * @ORM\OneToMany(targetEntity=VolCommand::class, mappedBy="Vol")
      */
     private $volcommands;
 
@@ -92,17 +86,7 @@ class Vol
         return $this->id;
     }
 
-    public function getIdAgence(): ?int
-    {
-        return $this->idAgence;
-    }
-
-    public function setIdAgence(int $idAgence): self
-    {
-        $this->idAgence = $idAgence;
-
-        return $this;
-    }
+  
 
     public function getCapacity(): ?int
     {

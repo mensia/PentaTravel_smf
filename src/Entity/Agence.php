@@ -64,7 +64,7 @@ class Agence
     private $vols;
 
     /**
-     * @ORM\OneToMany(targetEntity=Volcommand::class, mappedBy="agence")
+     * @ORM\OneToMany(targetEntity=VolCommand::class, mappedBy="agence")
      */
     private $volcommands;
 

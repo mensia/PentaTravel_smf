@@ -73,7 +73,7 @@ class AgenceController extends AbstractController
     /**
      * @Route ("/agence/delete/{id}",name="agenceDelete")
      */
-    public function Agencedeletee($id)
+    public function Agencedelete($id)
     {
         $repository = $this->getDoctrine()->getRepository(Agence::class);
         $Agence = $repository->find($id);
