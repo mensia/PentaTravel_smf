@@ -21,12 +21,6 @@ class Chambre
      */
     private $id;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_hotel", type="integer", nullable=false)
-     */
-    private $idHotel;
 
     /**
      * @var int
@@ -62,6 +56,11 @@ class Chambre
      * @ORM\Column(name="disp", type="boolean", nullable=false)
      */
     private $disp;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Hotel::class, inversedBy="chambres")
+     */
+    private $hotel;
 
     public function getId(): ?int
     {
@@ -136,6 +135,18 @@ class Chambre
     public function setDisp(bool $disp): self
     {
         $this->disp = $disp;
+
+        return $this;
+    }
+
+    public function getHotel(): ?hotel
+    {
+        return $this->hotel;
+    }
+
+    public function setHotel(?hotel $hotel): self
+    {
+        $this->hotel = $hotel;
 
         return $this;
     }

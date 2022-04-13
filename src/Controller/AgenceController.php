@@ -13,34 +13,26 @@ use App\Repository\AgenceRepository;
 use App\Form\AgenceType;
 use SebastianBergmann\Environment\Console;
 
+/**
+ * @Route("/agence")
+ */
+
 class AgenceController extends AbstractController
 {
-    /**
-     * @param AgenceRepository $repository
-     * 
-     * @Route("", name="app_agence")
+    /** 
+     * @Route("/", name="app_agence")
      */
     public function index(): Response
     {
+        $repository = $this->getDoctrine()->getRepository(Agence::class);
+        $tab = $repository->findAll();
+
         return $this->render('agence/index.html.twig', [
-            // 'controller_name' => 'AgenceController',
+            'tab' => $tab,
         ]);
         // $this->afficheAgence(repository);
     }
 
-    /**
-     * @param AgenceRepository $repository
-     * @return Response
-     * @Route ({"/agence"},name="app_agence")
-     */
-    public function afficheAgence(AgenceRepository $repository)
-    {
-        //$repository=$this->getDoctrine()->getRepository(Classroom::class);
-        $tabuser = $repository->findAll();
-        return $this->render('agence/index.html.twig', [
-            'tab' => $tabuser
-        ]);
-    }
 
     /**
      * @Route("/add", name="agenceAdd")

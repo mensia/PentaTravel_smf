@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AgenceController!
+{% endblock %}
+
+{% block body %}
+
+	{{ form_start(ChambreForm) }}
+	{# {{form_row(VolForm)}} #}
+	<div class="form-group row">
+		<label for="fname" class="col-sm-3 text-end control-label col-form-label">number</label>
+		<div class="col-sm-9">
+			{{form_widget(ChambreForm.number)}}
+			{{form_errors(ChambreForm.number)}}
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="lname" class="col-sm-3 text-end control-label col-form-label">prix</label>
+		<div class="col-sm-9">
+			{{form_widget(ChambreForm.prix)}}
+			{{form_errors(ChambreForm.prix)}}
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="lname" class="col-sm-3 text-end control-label col-form-label">image</label>
+		<div class="col-sm-9">
+			{{form_widget(ChambreForm.image)}}
+			{{form_errors(ChambreForm.image)}}
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="lname" class="col-sm-3 text-end control-label col-form-label">description</label>
+		<div class="col-sm-9">
+			{{form_widget(ChambreForm.description)}}
+			{{form_errors(ChambreForm.description)}}
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="lname" class="col-sm-3 text-end control-label col-form-label">disp</label>
+		<div class="col-sm-9">
+			{{form_widget(ChambreForm.disp)}}
+			{{form_errors(ChambreForm.disp)}}
+		</div>
+	</div>
+
+	<button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Submit</button>
+
+
+	<!-- jquery vendor -->
+	<script src="assets/js/lib/jquery.min.js"></script>
+	<script src="assets/js/lib/jquery.nanoscroller.min.js"></script>
+	<!-- nano scroller -->
+	<script src="assets/js/lib/menubar/sidebar.js"></script>
+	<script src="assets/js/lib/preloader/pace.min.js"></script>
+	<!-- sidebar -->
+
+	<!-- bootstrap -->
+
+
+	<script src="assets/js/lib/barRating/jquery.barrating.js"></script>
+	<script src="assets/js/lib/barRating/barRating.init.js"></script>
+	<script src="assets/js/lib/bootstrap.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
+	{{form_end(ChambreForm)}}
+{% endblock %}

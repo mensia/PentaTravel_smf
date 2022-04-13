@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -69,6 +71,16 @@ class Hotel
      * @ORM\Column(name="capacite", type="integer", nullable=false)
      */
     private $capacite;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Chambre::class, mappedBy="hotel")
+     */
+    private $chambres;
+
+    public function __construct()
+    {
+        $this->chambres = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -155,6 +167,36 @@ class Hotel
     public function setCapacite(int $capacite): self
     {
         $this->capacite = $capacite;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Chambre>
+     */
+    public function getChambres(): Collection
+    {
+        return $this->chambres;
+    }
+
+    public function addChambre(Chambre $chambre): self
+    {
+        if (!$this->chambres->contains($chambre)) {
+            $this->chambres[] = $chambre;
+            $chambre->setHotel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChambre(Chambre $chambre): self
+    {
+        if ($this->chambres->removeElement($chambre)) {
+            // set the owning side to null (unless already changed)
+            if ($chambre->getHotel() === $this) {
+                $chambre->setHotel(null);
+            }
+        }
 
         return $this;
     }
