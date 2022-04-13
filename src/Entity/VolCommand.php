@@ -31,23 +31,19 @@ class VolCommand
     /**
      * @var int
      *
-     * @ORM\Column(name="id_agence", type="integer", nullable=false)
-     */
-    private $idAgence;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_vol", type="integer", nullable=false)
-     */
-    private $idVol;
-
-    /**
-     * @var int
-     *
      * @ORM\Column(name="prix", type="integer", nullable=false)
      */
     private $prix;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=agence::class, inversedBy="volcommands")
+     */
+    private $agence;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=vol::class, inversedBy="volcommands")
+     */
+    private $Vol;
 
     public function getId(): ?int
     {
@@ -98,6 +94,30 @@ class VolCommand
     public function setPrix(int $prix): self
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getAgence(): ?agence
+    {
+        return $this->agence;
+    }
+
+    public function setAgence(?agence $agence): self
+    {
+        $this->agence = $agence;
+
+        return $this;
+    }
+
+    public function getVol(): ?vol
+    {
+        return $this->Vol;
+    }
+
+    public function setVol(?vol $Vol): self
+    {
+        $this->Vol = $Vol;
 
         return $this;
     }

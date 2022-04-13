@@ -4,64 +4,60 @@
 {% endblock %}
 
 {% block body %}
-	
 
-		<section id="main-content">
+
+	<section id="main-content">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="card">
 					<div class="card-title">
-						<h4>Bootstrap Data Table </h4>
-						
+						<h4>Bootstrap Data Table
+						</h4>
+
 					</div>
 
-				<a href="{{ path('agenceAdd') }}">Add</a>
+					<a href="{{ path('agenceAdd') }}">Add</a>
 					<div class="bootstrap-data-table-panel">
 						<div class="table-responsive">
 							<table id="row-select" class="display table table-borderd table-hover">
 								<thead>
 									<tr>
-										<th>Name</th>
-										<th>Position</th>
-										<th>Office</th>
-										<th>Age</th>
-										<th>Start date</th>
-										<th>Salary</th>
+										<th>idProp</th>
+										<th>nom</th>
+										<th>numero</th>
+										<th>Address</th>
+										<th>nbEtoile</th>
+										<th></th>
 									</tr>
 								</thead>
 
 								<tbody>
-									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td>61</td>
-										<td>2011/04/25</td>
-										<td>$320,800</td>
-									</tr>
+
 									{% for u in tab %}
 
-											<tr>
-												<td>{{u.idProp}}</td>
-												<td>{{u.nom}}</td>
-												<td>{{u.numero}}</td>
-												<td>{{u.Address}}</td>
-												<td>{{u.nbEtoile}}</td>
-												
-											<td><a href="{{ path('agenceDelete',{'id':u.id}) }}">Delete</a></td>
-											</tr>
-											<tr></tr>
-										{% endfor %}
-									
+										<tr>
+											<td>{{u.idProp}}</td>
+											<td>{{u.nom}}</td>
+											<td>{{u.numero}}</td>
+											<td>{{u.Address}}</td>
+											<td>{{u.nbEtoile}}</td>
+
+											<td>
+												<a href="{{ path('agenceDelete',{'id':u.id}) }}">Delete</a>
+											</td>
+										</tr>
+										<tr></tr>
+									{% endfor %}
+
 								</tbody>
 								<tfoot>
 									<tr>
-										<th>Name</th>
-										<th>Position</th>
-										<th>Office</th>
-										<th>Age</th>
-										<th>Start date</th>
-										<th>Salary</th>
+										<th>idProp</th>
+										<th>nom</th>
+										<th>numero</th>
+										<th>Address</th>
+										<th>nbEtoile</th>
+										<th></th>
 									</tr>
 								</tfoot>
 							</table>
@@ -74,7 +70,7 @@
 		</div>
 		<!-- /# row -->
 
-		
+
 	</section>
 
-	{% endblock %}
+{% endblock %}

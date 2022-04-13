@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -69,6 +71,21 @@ class Vol
      * @ORM\Column(name="date", type="date", nullable=false)
      */
     private $date;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=agence::class, inversedBy="vols")
+     */
+    private $agence;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Volcommand::class, mappedBy="Vol")
+     */
+    private $volcommands;
+
+    public function __construct()
+    {
+        $this->volcommands = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -155,6 +172,48 @@ class Vol
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getAgence(): ?agence
+    {
+        return $this->agence;
+    }
+
+    public function setAgence(?agence $agence): self
+    {
+        $this->agence = $agence;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Volcommand>
+     */
+    public function getVolcommands(): Collection
+    {
+        return $this->volcommands;
+    }
+
+    public function addVolcommand(Volcommand $volcommand): self
+    {
+        if (!$this->volcommands->contains($volcommand)) {
+            $this->volcommands[] = $volcommand;
+            $volcommand->setVol($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVolcommand(Volcommand $volcommand): self
+    {
+        if ($this->volcommands->removeElement($volcommand)) {
+            // set the owning side to null (unless already changed)
+            if ($volcommand->getVol() === $this) {
+                $volcommand->setVol(null);
+            }
+        }
 
         return $this;
     }
