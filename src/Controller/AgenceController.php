@@ -18,12 +18,12 @@ class AgenceController extends AbstractController
     /**
      * @param AgenceRepository $repository
      * 
-     * @Route("/agence", name="app_agence")
+     * @Route("", name="app_agence")
      */
     public function index(): Response
     {
         return $this->render('agence/index.html.twig', [
-            'controller_name' => 'AgenceController',
+            // 'controller_name' => 'AgenceController',
         ]);
         // $this->afficheAgence(repository);
     }
@@ -31,7 +31,7 @@ class AgenceController extends AbstractController
     /**
      * @param AgenceRepository $repository
      * @return Response
-     * @Route ({"/","/afficheAgence"},name="app_agence")
+     * @Route ({"/agence"},name="app_agence")
      */
     public function afficheAgence(AgenceRepository $repository)
     {
@@ -43,7 +43,7 @@ class AgenceController extends AbstractController
     }
 
     /**
-     * @Route("/Add", name="Add")
+     * @Route("/add", name="agenceAdd")
      */
     public function Add(
         Request $request,
@@ -70,7 +70,7 @@ class AgenceController extends AbstractController
     }
 
      /**
-     * @Route ("/delete/{id}",name="AgenceDeletee")
+     * @Route ("/agence/delete/{id}",name="agenceDelete")
      */
     public function Agencedeletee($id)
     {
