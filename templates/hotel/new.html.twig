@@ -1,4 +1,4 @@
-number{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Hello AgenceController!
 {% endblock %}
@@ -9,38 +9,45 @@ number{% extends 'base.html.twig' %}
 	{# {{form_row(HotelForm)}} #}
 
 	<div class="form-group row">
-		<label for="fname" class="col-sm-3 text-end control-label col-form-label">number</label>
+		<label for="fname" class="col-sm-3 text-end control-label col-form-label">nom</label>
 		<div class="col-sm-9">
-			{{form_widget(HotelForm.number)}}
-			{{form_errors(HotelForm.number)}}
+			{{form_widget(HotelForm.nom)}}
+			{{form_errors(HotelForm.nom)}}
 		</div>
 	</div>
 	<div class="form-group row">
-		<label for="lname" class="col-sm-3 text-end control-label col-form-label">prix</label>
+		<label for="lname" class="col-sm-3 text-end control-label col-form-label">address</label>
 		<div class="col-sm-9">
-			{{form_widget(HotelForm.prix)}}
-			{{form_errors(HotelForm.prix)}}
+			{{form_widget(HotelForm.address)}}
+			{{form_errors(HotelForm.address)}}
 		</div>
 	</div>
 	<div class="form-group row">
-		<label for="lname" class="col-sm-3 text-end control-label col-form-label">image</label>
+		<label for="lname" class="col-sm-3 text-end control-label col-form-label">type</label>
 		<div class="col-sm-9">
-			{{form_widget(HotelForm.image)}}
-			{{form_errors(HotelForm.image)}}
+			{{form_widget(HotelForm.type)}}
+			{{form_errors(HotelForm.type)}}
 		</div>
 	</div>
 	<div class="form-group row">
-		<label for="lname" class="col-sm-3 text-end control-label col-form-label">description</label>
+		<label for="lname" class="col-sm-3 text-end control-label col-form-label">nbEtoile</label>
 		<div class="col-sm-9">
-			{{form_widget(HotelForm.description)}}
-			{{form_errors(HotelForm.description)}}
+			{{form_widget(HotelForm.nbEtoile)}}
+			{{form_errors(HotelForm.nbEtoile)}}
 		</div>
 	</div>
 	<div class="form-group row">
-		<label for="lname" class="col-sm-3 text-end control-label col-form-label">disp</label>
+		<label for="lname" class="col-sm-3 text-end control-label col-form-label">capacite</label>
 		<div class="col-sm-9">
-			{{form_widget(HotelForm.disp)}}
-			{{form_errors(HotelForm.disp)}}
+			{{form_widget(HotelForm.capacite)}}
+			{{form_errors(HotelForm.capacite)}}
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="lname" class="col-sm-3 text-end control-label col-form-label">phone</label>
+		<div class="col-sm-9">
+			{{form_widget(HotelForm.phone)}}
+			{{form_errors(HotelForm.phone)}}
 		</div>
 	</div>
 

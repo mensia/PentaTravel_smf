@@ -7,10 +7,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Form\ChambreType;
+use App\Form\HotelType;
 use App\Entity\Hotel;
 use App\Entity\Chambre;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * @Route("/hotel")
  */
@@ -26,6 +26,18 @@ class HotelController extends AbstractController
         $tab = $repository->findAll();
 
         return $this->render('hotel/index.html.twig', [
+            'tab' => $tab,
+        ]);
+    }
+    /**
+     * @Route("/front", name="app_hotelf")
+     */
+    public function findex(): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Hotel::class);
+        $tab = $repository->findAll();
+
+        return $this->render('hotel/findex.html.twig', [
             'tab' => $tab,
         ]);
     }
@@ -58,7 +70,25 @@ class HotelController extends AbstractController
     }
 
     /**
-     * @Route ("/hotel/delete/{id}",name="hotelDelete")
+     * @Route ("/update/{id}" , name="hotelUpdate")
+     */
+    public function update($id, Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository(Hotel::class);
+        $hotel = $repository->find($id);
+        $form = $this->createForm(HotelType::class, $hotel);
+        $form->add('update', SubmitType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute('app_hotel');
+        }
+        return $this->render('hotel/new.html.twig', ['HotelForm' => $form->createView()]);
+    }
+
+    /**
+     * @Route ("/delete/{id}",name="hotelDelete")
      */
     public function Hoteldelete($id)
     {

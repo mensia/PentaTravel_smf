@@ -9,12 +9,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\ChambreType;
-use App\Entity\Hotel;
 use App\Entity\Chambre;
+use App\Entity\Hotel;
 
 /**
-     * @Route("/chambre")
-     */
+ * @Route("/chambre")
+ */
 class ChambreController extends AbstractController
 {
     /**
@@ -33,7 +33,7 @@ class ChambreController extends AbstractController
     /**
      * @Route("/{id}", name="chambre_hotel")
      */
-    public function ChambredHotel($id): Response
+    public function Chambredhotel($id): Response
     {
         // $repository = $this->getDoctrine()->getRepository(Chambre::class);
         // $tab = $repository->findBy(['hotel_id' => $id]);
@@ -76,6 +76,25 @@ class ChambreController extends AbstractController
             'ChambreForm' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route ("/update/{id}" , name="ChambreUpdate")
+     */
+    public function update($id, Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository(Chambre::class);
+        $chambre = $repository->find($id);
+        $form = $this->createForm(ChambreType::class, $chambre);
+        $form->add('update', SubmitType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute('app_chambre');
+        }
+        return $this->render('chambre/newChambre.html.twig', ['ChambreForm' => $form->createView()]);
+    }
+
     /**
      * @Route ("/chambre/delete/{id}",name="chambreDelete")
      */

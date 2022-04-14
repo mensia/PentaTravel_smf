@@ -41,11 +41,11 @@
 											<td>{{u.disp}}</td>
 											<td>{{u.getHotel().getNom()}}</td>
 
-											{# <td>
-												<a href="{{ path('volAdd',{'id':u.id}) }}">Ajout Vol</a>
-												<a href="{{ path('vol_agence',{'id':u.id}) }}">Afficher Vol</a>
-												<a href="{{ path('agenceDelete',{'id':u.id}) }}">Delete</a>
-											</td> #}
+											<td>
+												<a href="{{ path('reservationAdd',{'id':u.id}) }}">Reservation</a>
+												{# <a href="{{ path('vol_agence',{'id':u.id}) }}">Afficher Vol</a> #}
+												{# <a href="{{ path('agenceDelete',{'id':u.id}) }}">Delete</a> #}
+											</td>
 										</tr>
 										<tr></tr>
 									{% endfor %}

@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello{% endblock %}
+
+{% block body %}
+<section id="main-content">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-title">
+						<h4>Reservation Data Table
+						</h4>
+
+					</div>
+
+					{# <a href="{{ path('agenceAdd') }}">Add</a> #}
+					<div class="bootstrap-data-table-panel">
+						<div class="table-responsive">
+							<table id="row-select" class="display table table-borderd table-hover">
+								<thead>
+									<tr>
+										{# <th>nom</th> #}
+                                            
+										<th>idUser</th>
+										<th>prix</th>
+										<th>entree</th>
+										<th>sortie</th>
+										<th>numChambre</th>
+										<th>description</th>
+										<th>hotel</th>
+										{# <th>chambre</th> #}
+									</tr>
+								</thead>
+
+								<tbody>
+
+									{% for u in tab %}
+
+										<tr>
+											<td>{{u.idUser}}</td>
+											<td>{{u.prix}}</td>
+											<td>{{u.entree|date}}</td>
+											<td>{{u.sortie|date}}</td>
+											<td>{{u.numChambre}}</td>
+											<td>{{u.description}}</td>
+											<td>{{u.hotel.getNom()}}</td>
+											{# <td>{{u.chambre}}</td> #}
+
+											{# <td>
+												<a href="{{ path('chambreAdd',{'id':u.id}) }}">Ajout Chambre</a>
+												<a href="{{ path('chambre_hotel',{'id':u.id}) }}">Afficher Chambre</a>
+												<a href="{{ path('hotelDelete',{'id':u.id}) }}">Delete</a>
+												<a href="{{ path('hotelUpdate',{'id':u.id}) }}">Update</a>
+											</td> #}
+										</tr>
+										<tr></tr>
+									{% endfor %}
+
+								</tbody>
+								<tfoot>
+									<tr>
+										<th>idUser</th>
+										<th>prix</th>
+										<th>entree</th>
+										<th>sortie</th>
+										<th>numChambre</th>
+										<th>description</th>
+										<th>hotel</th>
+										{# <th>chambre</th> #}
+										<th></th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- /# card -->
+			</div>
+			<!-- /# column -->
+		</div>
+		<!-- /# row -->
+
+
+	</section>
+{% endblock %}

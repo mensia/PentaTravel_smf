@@ -28,12 +28,6 @@ class Reservation
      */
     private $idUser;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_hotel", type="integer", nullable=false)
-     */
-    private $idHotel;
 
     /**
      * @var int
@@ -70,6 +64,16 @@ class Reservation
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Hotel::class, inversedBy="reservations")
+     */
+    private $hotel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Chambre::class, inversedBy="reservations")
+     */
+    private $chambre;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -83,18 +87,6 @@ class Reservation
     public function setIdUser(int $idUser): self
     {
         $this->idUser = $idUser;
-
-        return $this;
-    }
-
-    public function getIdHotel(): ?int
-    {
-        return $this->idHotel;
-    }
-
-    public function setIdHotel(int $idHotel): self
-    {
-        $this->idHotel = $idHotel;
 
         return $this;
     }
@@ -155,6 +147,30 @@ class Reservation
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getHotel(): ?hotel
+    {
+        return $this->hotel;
+    }
+
+    public function setHotel(?hotel $hotel): self
+    {
+        $this->hotel = $hotel;
+
+        return $this;
+    }
+
+    public function getChambre(): ?chambre
+    {
+        return $this->chambre;
+    }
+
+    public function setChambre(?chambre $chambre): self
+    {
+        $this->chambre = $chambre;
 
         return $this;
     }
