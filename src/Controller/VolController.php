@@ -41,6 +41,21 @@ class VolController extends AbstractController
         ]);
     }
     /**
+     * @Route("/front/vol/{id}", name="vol_agencef")
+     */
+    public function VoldAgencef($id): Response
+    {
+        // $repository = $this->getDoctrine()->getRepository(Vol::class);
+        // $tab = $repository->findBy(['agence_id' => $id]);
+
+        $repository = $this->getDoctrine()->getRepository(Agence::class);
+        $agence = $repository->find($id);
+        $tab = $agence->getVols();
+        return $this->render('vol/findex.html.twig', [
+            'tab' => $tab,
+        ]);
+    }
+    /**
      * @Route("vol/add/{id}", name="volAdd")
      */
     public function Add(
@@ -57,7 +72,7 @@ class VolController extends AbstractController
         // console.log("Message here");
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted()&& $form->isValid()) {
             $Vol->setAgence($agence);
 
             $entityManager->persist($Vol);

@@ -49,7 +49,7 @@ class ReservationController extends AbstractController
         // console.log("Message here");
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted()&& $form->isValid()) {
             $res->setIdUser(0);
             $res->setHotel($hotel);
             $res->setNumChambre($chambre->getNumber());
@@ -87,7 +87,7 @@ class ReservationController extends AbstractController
         // console.log("Message here");
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted()&& $form->isValid()) {
             $res->setIdUser(0);
             $res->setHotel($hotel);
             $res->setNumChambre($chambre->getNumber());

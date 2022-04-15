@@ -32,6 +32,19 @@ class AgenceController extends AbstractController
         ]);
         // $this->afficheAgence(repository);
     }
+    /** 
+     * @Route("/front", name="app_agencef")
+     */
+    public function indexf(): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Agence::class);
+        $tab = $repository->findAll();
+
+        return $this->render('agence/findex.html.twig', [
+            'tab' => $tab,
+        ]);
+        // $this->afficheAgence(repository);
+    }
 
 
     /**
@@ -47,7 +60,7 @@ class AgenceController extends AbstractController
         // console.log("Message here");
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted()&& $form->isValid()) {
             $Agence->setIdProp(0);
 
             $entityManager->persist($Agence);

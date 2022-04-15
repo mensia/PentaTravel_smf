@@ -54,7 +54,7 @@ class HotelController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted()&& $form->isValid()) {
             $Hotel->setIdResponsable(0);
 
             $entityManager->persist($Hotel);
@@ -79,7 +79,7 @@ class HotelController extends AbstractController
         $form = $this->createForm(HotelType::class, $hotel);
         $form->add('update', SubmitType::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()&& $form->isValid() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute('app_hotel');

@@ -77,7 +77,7 @@ class ChambreController extends AbstractController
         // console.log("Message here");
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted()&& $form->isValid()) {
             $Chambre->setHotel($hotel);
 
             $entityManager->persist($Chambre);
@@ -102,7 +102,7 @@ class ChambreController extends AbstractController
         $form = $this->createForm(ChambreType::class, $chambre);
         $form->add('update', SubmitType::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()&& $form->isValid() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute('app_chambre');
