@@ -68,4 +68,42 @@ class ReservationController extends AbstractController
             'reservationForm' => $form->createView(),
         ]);
     }
+    /**
+     * @Route("/front/reservation/add/{id}", name="reservationAddf")
+     */
+    public function Addf(
+        $id,
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response {
+        // $request = new Request;
+        // $entityManager = new EntityManagerInterface;
+        $res = new Reservation();
+        $form = $this->createForm(ReservationType::class, $res);
+        $repository = $this->getDoctrine()->getRepository(Chambre::class);
+        $chambre = $repository->find($id);
+        $repository = $this->getDoctrine()->getRepository(Hotel::class);
+        $hotel = $repository->find($chambre->getHotel());
+        // console.log("Message here");
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            $res->setIdUser(0);
+            $res->setHotel($hotel);
+            $res->setNumChambre($chambre->getNumber());
+            $res->setDescription($chambre->getDescription());
+            $res->setChambre($chambre);
+            $res->setPrix(999);
+
+            $entityManager->persist($res);
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_vol');
+        }
+
+        return $this->render('reservation/fnew.html.twig', [
+            'reservationForm' => $form->createView(),
+        ]);
+    }
 }

@@ -46,6 +46,21 @@ class ChambreController extends AbstractController
         ]);
     }
     /**
+     * @Route("/front/{id}", name="chambre_hotelf")
+     */
+    public function Chambredhotelf($id): Response
+    {
+        // $repository = $this->getDoctrine()->getRepository(Chambre::class);
+        // $tab = $repository->findBy(['hotel_id' => $id]);
+
+        $repository = $this->getDoctrine()->getRepository(Hotel::class);
+        $hotel = $repository->find($id);
+        $tab = $hotel->getChambres();
+        return $this->render('chambre/findex.html.twig', [
+            'tab' => $tab,
+        ]);
+    }
+    /**
      * @Route("/add/{id}", name="chambreAdd")
      */
     public function Add(
@@ -72,7 +87,7 @@ class ChambreController extends AbstractController
             return $this->redirectToRoute('app_chambre');
         }
 
-        return $this->render('Chambre/new.html.twig', [
+        return $this->render('chambre/new.html.twig', [
             'ChambreForm' => $form->createView(),
         ]);
     }

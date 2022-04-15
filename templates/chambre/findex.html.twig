@@ -20,7 +20,7 @@
 										<span class="mkdf-tours-standard-item-label-holder">
 											<span class="mkdf-tour-item-label">
 												<span class="mkdf-tour-item-label-inner">
-													{{o.address}}
+													{{o.getHotel().getNom()}}
 												</span>
 											</span>
 										</span>
@@ -29,15 +29,15 @@
 								<div class="mkdf-tours-list-item-content-holder">
 									<div class="mkdf-tours-list-item-title-price-holder">
 										<h3 class="mkdf-tour-title">
-											<a href="wanderers.qodeinteractive.com/tour-item/ultimate-thailand/index.html">{{o.nom}}</a>
+											<a href="wanderers.qodeinteractive.com/tour-item/ultimate-thailand/index.html">{{o.description}}</a>
 										</h3>
 									</div>
 									<div class="mkdf-tours-list-item-price-holder">
 										<div class="mkdf-tours-list-item-price">
 											<span class="mkdf-tours-price-holder">
-												<span class="mkdf-tours-item-price ">{{o.nbEtoile}}</span>
+												<span class="mkdf-tours-item-price ">{{o.number}}</span>
 											</span>
-											<span class="mkdf-tours-list-price-label">/5</span>
+											<span class="mkdf-tours-list-price-label"></span>
 										</div>
 									</div>
 									<div class="mkdf-tours-list-item-excerpt">
@@ -51,7 +51,7 @@
 													<span class="icon_clock"></span>
 												</span>
 												<span class="mkdf-tour-info-label">
-													{{o.type}}
+													{{o.disp}}
 												</span>
 											</div>
 										</div>
@@ -61,12 +61,12 @@
 													<span class="icon_group"></span>
 												</span>
 												<span class="mkdf-tour-info-label">
-													{{o.nbEtoile}}
+													{{o.prix}}
 												</span>
 											</div>
 										</div>
 										<div class="mkdf-tours-list-item-bottom-item">
-											<a href="{{ path('chambre_hotelf',{'id':o.id}) }}">Vols</a>
+											<a href="{{ path('reservationAddf',{'id':o.id}) }}">Reservee</a>
 										</div>
 
 
