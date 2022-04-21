@@ -1,0 +1,78 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block body %}
+
+	<section class="section" id="trainers">
+		<div class="container">
+			<br>
+			<br>
+
+			<div class="row">
+            {% for o in tab %}
+				<div class="col-lg-4">
+					<div class="trainer-item">
+						<div class="image-thumb">
+							<img src="{{asset('front/assets/images/product-1-720x480.jpg')}}" alt="">
+						</div>
+						<div class="down-content">
+							<span>
+								<sup>$</sup>{{o.phone}}
+							</span>
+
+							<h4>{{o.nom}}</h4>
+
+							<p>
+								<i class="fa fa-calendar"></i>
+								{{o.type}} &nbsp;&nbsp;&nbsp;
+
+								<i class="fa fa-star"></i>
+								{{o.nbEtoile}} &nbsp;&nbsp;&nbsp;
+
+								<i class="fa fa-plane"></i>
+								{{o.address}} &nbsp;&nbsp;&nbsp;
+								<i class="fa fa-user"></i>
+								{{o.capacite}} &nbsp;&nbsp;&nbsp;
+							</p>
+
+							<ul class="social-icons">
+								<li>
+									<a href="{{ path('chambre_hotelf',{'id':o.id}) }}">+ View Chambres</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+            {% endfor %}
+			</div>
+
+			<br>
+
+			<nav>
+				<ul class="pagination pagination-lg justify-content-center">
+					<li class="page-item">
+						<a class="page-link" href="#" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+							<span class="sr-only">Previous</span>
+						</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">1</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">2</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">3</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+							<span class="sr-only">Next</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+
+		</div>
+	</section>
+{% endblock %}
