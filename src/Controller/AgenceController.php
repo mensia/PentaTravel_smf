@@ -42,6 +42,7 @@ class AgenceController extends AbstractController
         $tab = $repository->findAll();
 
         return $this->render('agence/findex.html.twig', [
+            'title' => "Les Agence",
             'tab' => $tab,
         ]);
         // $this->afficheAgence(repository);

@@ -42,7 +42,7 @@ class VolController extends AbstractController
         ]);
     }
     /**
-     * @Route("/front/vol/{id}", name="vol_agencef")
+     * @Route("/frontt/vol/{id}", name="vol_agencef")
      */
     public function VoldAgencef($id): Response
     {
@@ -54,6 +54,8 @@ class VolController extends AbstractController
         $tab = $agence->getVols();
         return $this->render('vol/findex.html.twig', [
             'tab' => $tab,
+            'title' => '3assba',
+            'ag' => $agence,
         ]);
     }
     /**
