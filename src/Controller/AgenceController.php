@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\AgenceRepository;
 use App\Form\AgenceType;
 use SebastianBergmann\Environment\Console;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * @Route("/agence")
@@ -75,6 +76,23 @@ class AgenceController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route ("/update/{id}" , name="agenceUpdate")
+     */
+    public function update($id, Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository(Agence::class);
+        $Agence = $repository->find($id);
+        $form = $this->createForm(AgenceType::class, $Agence);
+        $form->add('update', SubmitType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()&& $form->isValid() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute('app_agence');
+        }
+        return $this->render('agence/new.html.twig', ['AgenceForm' => $form->createView()]);
+    }
     /**
      * @Route ("/agence/delete/{id}",name="agenceDelete")
      */

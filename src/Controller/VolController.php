@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\VolType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use App\Entity\Vol;
 
@@ -85,6 +86,23 @@ class VolController extends AbstractController
         return $this->render('Vol/new.html.twig', [
             'VolForm' => $form->createView(),
         ]);
+    }
+     /**
+     * @Route ("/update/{id}" , name="volUpdate")
+     */
+    public function update($id, Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository(Vol::class);
+        $chambre = $repository->find($id);
+        $form = $this->createForm(VolType::class, $chambre);
+        $form->add('update', SubmitType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()&& $form->isValid() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute('app_vol');
+        }
+        return $this->render('vol/new.html.twig', ['VolForm' => $form->createView()]);
     }
     /**
      * @Route ("/vol/delete/{id}",name="volDelete")

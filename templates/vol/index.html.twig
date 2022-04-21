@@ -44,6 +44,7 @@
 											<td>{{u.getAgence().getNom()}}</td>
 
 											<td>
+												<a href="{{ path('volUpdate',{'id':u.id}) }}">Update</a>
 												<a href="{{ path('volDelete',{'id':u.id}) }}">Delete</a>
 											</td>
 										</tr>

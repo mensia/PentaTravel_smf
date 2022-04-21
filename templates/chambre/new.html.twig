@@ -5,7 +5,7 @@
 
 {% block body %}
 
-	{{ form_start(ChambreForm) }}
+	{{ form_start(ChambreForm, {'attr': {'novalidate': 'novalidate'}} ) }}
 	{# {{form_row(VolForm)}} #}
 	<div class="form-group row">
 		<label for="fname" class="col-sm-3 text-end control-label col-form-label">number</label>
@@ -35,15 +35,16 @@
 			{{form_errors(ChambreForm.description)}}
 		</div>
 	</div>
-	<div class="form-group row">
+	{# <div class="form-group row">
 		<label for="lname" class="col-sm-3 text-end control-label col-form-label">disp</label>
 		<div class="col-sm-9">
 			{{form_widget(ChambreForm.disp)}}
 			{{form_errors(ChambreForm.disp)}}
 		</div>
-	</div>
+	</div> #}
 
 	<button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Submit</button>
+	{{form_end(ChambreForm)}}
 
 
 	<!-- jquery vendor -->
@@ -61,5 +62,4 @@
 	<script src="assets/js/lib/barRating/barRating.init.js"></script>
 	<script src="assets/js/lib/bootstrap.min.js"></script>
 	<script src="assets/js/scripts.js"></script>
-	{{form_end(ChambreForm)}}
 {% endblock %}

@@ -5,7 +5,7 @@
 
 {% block body %}
 
-	{{ form_start(AgenceForm) }}
+	{{ form_start(AgenceForm, {'attr': {'novalidate': 'novalidate'}})  }}
 	{# {{form_row(AgenceForm)}} #}
 
 	<div class="form-group row">

@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Form\ChambreType;
 use App\Entity\Chambre;
 use App\Entity\Hotel;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * @Route("/chambre")
@@ -107,7 +108,7 @@ class ChambreController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('app_chambre');
         }
-        return $this->render('chambre/newChambre.html.twig', ['ChambreForm' => $form->createView()]);
+        return $this->render('chambre/new.html.twig', ['ChambreForm' => $form->createView()]);
     }
 
     /**
