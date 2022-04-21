@@ -47,7 +47,7 @@ class ChambreController extends AbstractController
         ]);
     }
     /**
-     * @Route("/front/{id}", name="chambre_hotelf")
+     * @Route("/frontt/{id}", name="chambre_hotelf")
      */
     public function Chambredhotelf($id): Response
     {
@@ -59,6 +59,8 @@ class ChambreController extends AbstractController
         $tab = $hotel->getChambres();
         return $this->render('chambre/findex.html.twig', [
             'tab' => $tab,
+            'h' => $hotel,
+            'title' => 'hajaa',
         ]);
     }
     /**

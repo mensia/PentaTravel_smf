@@ -39,6 +39,7 @@ class HotelController extends AbstractController
 
         return $this->render('hotel/findex.html.twig', [
             'tab' => $tab,
+            'title' => 'Hotels',
         ]);
     }
 
