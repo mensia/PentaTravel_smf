@@ -13,6 +13,8 @@ use App\Entity\Chambre;
 use App\Entity\Hotel;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
+
+use Ivory\GoogleMap\Map;
 /**
  * @Route("/chambre")
  */
@@ -51,6 +53,8 @@ class ChambreController extends AbstractController
      */
     public function Chambredhotelf($id): Response
     {
+
+        // $map = new Map();
         // $repository = $this->getDoctrine()->getRepository(Chambre::class);
         // $tab = $repository->findBy(['hotel_id' => $id]);
 
@@ -60,7 +64,7 @@ class ChambreController extends AbstractController
         return $this->render('chambre/findex.html.twig', [
             'tab' => $tab,
             'h' => $hotel,
-            'title' => 'hajaa',
+            'title' => 'Chambre',
         ]);
     }
     /**

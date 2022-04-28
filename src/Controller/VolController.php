@@ -54,7 +54,7 @@ class VolController extends AbstractController
         $tab = $agence->getVols();
         return $this->render('vol/findex.html.twig', [
             'tab' => $tab,
-            'title' => '3assba',
+            'title' => 'Vols',
             'ag' => $agence,
         ]);
     }
