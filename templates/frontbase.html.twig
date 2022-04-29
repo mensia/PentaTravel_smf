@@ -69,7 +69,7 @@
 							<!-- ***** Menu Start ***** -->
 							<ul class="nav">
 								<li>
-									<a href="index.html" class="active">Home</a>
+									<a href="{{path('app_front')}}" class="active">Home</a>
 								</li>
 								<li>
 									<a href="{{path('app_agencef')}}">Agence</a>
@@ -81,7 +81,7 @@
 									<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
 
 									<div class="dropdown-menu">
-										<a class="dropdown-item" href="about.html">About Us</a>
+										<a class="dropdown-item" href="{{path('front_schedual')}}">schedual </a>
 										<a class="dropdown-item" href="testimonials.html">Testimonials</a>
 										<a class="dropdown-item" href="terms.html">Terms</a>
 									</div>
@@ -104,93 +104,7 @@
 		{% block body %}{% endblock %}
 		<!-- ***** Main Banner Area End ***** -->
 		<!-- ***** Cars Starts ***** -->
-		<section class="section" id="trainers">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 offset-lg-3">
-						<div class="section-heading">
-							<h2>Featured
-								<em>Packages</em>
-							</h2>
-							<img src="{{asset('front/assets/images/line-dec.png')}}" alt="">
-							<p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-4">
-						<div class="trainer-item">
-							<div class="image-thumb">
-								<img src="{{asset('front/assets/images/product-1-720x480.jpg')}}" alt="">
-							</div>
-							<div class="down-content">
-								<span>
-									<sup>$</sup>300.00 -
-									<sup>$</sup>400.00
-								</span>
-
-								<h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-								<p>
-									<i class="fa fa-calendar"></i>
-									Spring &nbsp;&nbsp;&nbsp;
-
-									<i class="fa fa-cube"></i>
-									20 nights &nbsp;&nbsp;&nbsp;
-
-									<i class="fa fa-plane"></i>
-									Flight included &nbsp;&nbsp;&nbsp;
-								</p>
-
-								<ul class="social-icons">
-									<li>
-										<a href="package-details.html">+ View Package</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="trainer-item">
-							<div class="image-thumb">
-								<img src="{{asset('front/assets/images/product-2-720x480.jpg')}}" alt="">
-							</div>
-							<div class="down-content">
-								<span>
-									<sup>$</sup>300.00 -
-									<sup>$</sup>400.00
-								</span>
-
-								<h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-								<p>
-									<i class="fa fa-calendar"></i>
-									Spring &nbsp;&nbsp;&nbsp;
-
-									<i class="fa fa-cube"></i>
-									20 nights &nbsp;&nbsp;&nbsp;
-
-									<i class="fa fa-plane"></i>
-									Flight included &nbsp;&nbsp;&nbsp;
-								</p>
-
-								<ul class="social-icons">
-									<li>
-										<a href="{{asset('front/package-details.html')}}">+ View Package</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<br>
-
-				<div class="main-button text-center">
-					<a href="{{asset('front/packages.html')}}">View Packages</a>
-				</div>
-			</div>
-		</section>
+		
 		<!-- ***** Cars Ends ***** -->
 
 		<!-- ***** Footer Start ***** -->
