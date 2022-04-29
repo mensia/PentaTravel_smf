@@ -8,41 +8,53 @@
 			<br>
 
 			<div class="row">
-            {% for o in tab %}
-				<div class="col-lg-4">
-					<div class="trainer-item">
-						<div class="image-thumb">
-							<img src="{{asset('front/assets/images/product-1-720x480.jpg')}}" alt="">
-						</div>
-						<div class="down-content">
-							<span>
-								<sup>$</sup>{{o.phone}}
-							</span>
+				{% for o in tab %}
+					<div class="col-lg-4">
+						<div class="trainer-item">
+							<div class="image-thumb">
+								<img src="{{asset('front/assets/images/product-1-720x480.jpg')}}" alt="">
+							</div>
+							<div class="down-content">
+								<span>
+									<sup>$</sup>
+									{{o.phone}}
+								</span>
 
-							<h4>{{o.nom}}</h4>
+								<h4>{{o.nom}}</h4>
 
-							<p>
-								<i class="fa fa-calendar"></i>
-								{{o.type}} &nbsp;&nbsp;&nbsp;
+								<p>
+									<i class="fa fa-calendar"></i>
+									{{o.type}}
+									&nbsp;&nbsp;&nbsp;
 
-								<i class="fa fa-star"></i>
-								{{o.nbEtoile}} &nbsp;&nbsp;&nbsp;
+									<i class="fa fa-star"></i>
+									{{o.nbEtoile}}
+									&nbsp;&nbsp;&nbsp;
 
-								<i class="fa fa-plane"></i>
-								{{o.address}} &nbsp;&nbsp;&nbsp;
-								<i class="fa fa-user"></i>
-								{{o.capacite}} &nbsp;&nbsp;&nbsp;
-							</p>
+									<i class="fa fa-plane"></i>
+									{{o.address}}
+									&nbsp;&nbsp;&nbsp;
+									<i class="fa fa-user"></i>
+									{{o.capacite}}
+									&nbsp;&nbsp;&nbsp;
 
-							<ul class="social-icons">
-								<li>
-									<a href="{{ path('chambre_hotelf',{'id':o.id}) }}">+ View Chambres</a>
-								</li>
-							</ul>
+
+									<i class="fa fa-heart" href="{{ path('hotellike',{'id':o.id}) }}"></i>
+									{{o.likes}}
+								</p>
+
+								<ul class="social-icons">
+									<a href="{{ path('hotellike',{'id':o.id}) }}">
+										<i class="fa fa-heart"></i>
+									</a>
+									<li>
+										<a href="{{ path('chambre_hotelf',{'id':o.id}) }}">+ View Chambres</a>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
-            {% endfor %}
+				{% endfor %}
 			</div>
 
 			<br>

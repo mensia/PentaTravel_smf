@@ -12,6 +12,9 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Entity\VolCommand;
 use App\Entity\Vol;
 use App\Entity\Agence;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+use \Datetime;
 
 class VolCommandController extends AbstractController
 {
@@ -31,19 +34,14 @@ class VolCommandController extends AbstractController
     public function Add(
         $id,
         Request $request,
+        MailerInterface $mailer,
         EntityManagerInterface $entityManager
     ): Response {
-        // $request = new Request;
-        // $entityManager = new EntityManagerInterface;
         $Vol_command = new Volcommand();
-        // $form = $this->createForm(VolcommandType::class, $Vol_command);
+
         $repository = $this->getDoctrine()->getRepository(Vol::class);
         $vol = $repository->find($id);
-        // $repository = $this->getDoctrine()->getRepository(Agence::class);
-        // $agence = $repository->find($vol->getAgence());
         $agence = $vol->getAgence();
-        // console.log("Message here");
-        // $form->handleRequest($request);
 
         $Vol_command->setIdUser(0);
         $Vol_command->setAgence($agence);
@@ -51,8 +49,27 @@ class VolCommandController extends AbstractController
         $Vol_command->setPrix($vol->getPrix());
 
         $entityManager->persist($Vol_command);
-
         $entityManager->flush();
+        $today = new DateTime();
+
+        $email = (new Email())
+            ->from('hana.mensia@esprit.tn')
+            ->to('mouhamedrami.bendhia@esprit.tn')
+            //->cc('cc@example.com')
+            //->bcc('bcc@example.com')
+            //->replyTo('fabien@example.com')
+            //->priority(Email::PRIORITY_HIGH)
+            ->subject('Notification !')
+            ->text('Sent By Penta travel, ' . $agence->getNom())
+            ->html('<p> prix :' . $Vol_command->getPrix() . '</p>'
+                . '<p> Depart :' . $vol->getDepart() . '</p>'
+                . '<p> Destination :' . $vol->getDestination() . '</p>'
+                . '<p> Date in :' . $vol->getDate()->diff($today)->format('%d days'). '</p>');
+
+        $mailer->send($email);
+
+        // ...
+
 
         return $this->redirectToRoute('app_vol');
     }

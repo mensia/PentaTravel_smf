@@ -82,6 +82,11 @@ class Hotel
      */
     private $reservations;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $likes;
+
     public function __construct()
     {
         $this->chambres = new ArrayCollection();
@@ -233,6 +238,18 @@ class Hotel
                 $reservation->setHotel(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLikes(): ?int
+    {
+        return $this->likes;
+    }
+
+    public function setLikes(int $likes): self
+    {
+        $this->likes = $likes;
 
         return $this;
     }

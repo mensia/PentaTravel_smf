@@ -11,6 +11,7 @@ use App\Form\HotelType;
 use App\Entity\Hotel;
 use App\Entity\Chambre;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 /**
  * @Route("/hotel")
  */
@@ -37,6 +38,9 @@ class HotelController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Hotel::class);
         $tab = $repository->findAll();
 
+        usort($tab, function ($a, $b) {
+            return $b->getLikes() - $a->getLikes();
+        });
         return $this->render('hotel/findex.html.twig', [
             'tab' => $tab,
             'title' => 'Hotels',
@@ -55,7 +59,7 @@ class HotelController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()&& $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $Hotel->setIdResponsable(0);
 
             $entityManager->persist($Hotel);
@@ -80,7 +84,7 @@ class HotelController extends AbstractController
         $form = $this->createForm(HotelType::class, $hotel);
         $form->add('update', SubmitType::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted()&& $form->isValid() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute('app_hotel');
@@ -99,5 +103,19 @@ class HotelController extends AbstractController
         $em->remove($Hotel);
         $em->flush();
         return $this->redirectToRoute('app_hotel');
+    }
+
+    /**
+     * @Route ("/like/{id}",name="hotellike")
+     */
+    public function Hotellike($id)
+    {
+        $repository = $this->getDoctrine()->getRepository(Hotel::class);
+        $Hotel = $repository->find($id);
+        $Hotel->setLikes($Hotel->getLikes() + 1);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($Hotel);
+        $em->flush();
+        return $this->redirectToRoute('app_hotelf');
     }
 }

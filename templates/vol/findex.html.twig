@@ -95,6 +95,9 @@
 												<td>{{u.depart}}</td>
 												<td>{{u.destination}}</td>
 												<td>{{u.date|date}}</td>
+												<td>
+													<a href="{{ path('volcAdd',{'id':u.id}) }}">Reservee</a>
+												</td>
 											</tr>
 										{% endfor %}
 									</tbody>
