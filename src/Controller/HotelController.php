@@ -61,6 +61,8 @@ class HotelController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $Hotel->setIdResponsable(0);
+            $Hotel->setLikes(0);
+            $Hotel->setNbVotes(0);
 
             $entityManager->persist($Hotel);
 

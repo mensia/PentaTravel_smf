@@ -6,7 +6,6 @@
 {% block body %}
 
 	{{ form_start(HotelForm ,{'attr': {'novalidate': 'novalidate'}})}}
-	{# {{form_row(HotelForm)}} #}
 
 	<div class="form-group row">
 		<label for="fname" class="col-sm-3 text-end control-label col-form-label">nom</label>
@@ -29,13 +28,15 @@
 			{{form_errors(HotelForm.type)}}
 		</div>
 	</div>
-	<div class="form-group row">
-		<label for="lname" class="col-sm-3 text-end control-label col-form-label">nbEtoile</label>
-		<div class="col-sm-9">
-			{{form_widget(HotelForm.nbEtoile)}}
-			{{form_errors(HotelForm.nbEtoile)}}
-		</div>
-	</div>
+	{# <div class="form-group row">
+					<label for="lname" class="col-sm-3 text-end control-label col-form-label">nbEtoile</label>
+					<div class="col-sm-9">
+						{{form_widget(HotelForm.nbEtoile)}}
+						{{form_errors(HotelForm.nbEtoile)}}
+					</div>
+				</div> #}
+	{# {{ 3|rating(5) }} #}
+	{{form_widget(HotelForm.nbEtoile)}}
 	<div class="form-group row">
 		<label for="lname" class="col-sm-3 text-end control-label col-form-label">capacite</label>
 		<div class="col-sm-9">
@@ -53,6 +54,7 @@
 
 	<button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Submit</button>
 
+	{{form_end(HotelForm)}}
 
 	<!-- jquery vendor -->
 	<script src="assets/js/lib/jquery.min.js"></script>
@@ -61,13 +63,15 @@
 	<script src="assets/js/lib/menubar/sidebar.js"></script>
 	<script src="assets/js/lib/preloader/pace.min.js"></script>
 	<!-- sidebar -->
-
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}"/>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
 	<!-- bootstrap -->
-
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	
 
 	<script src="assets/js/lib/barRating/jquery.barrating.js"></script>
 	<script src="assets/js/lib/barRating/barRating.init.js"></script>
 	<script src="assets/js/lib/bootstrap.min.js"></script>
 	<script src="assets/js/scripts.js"></script>
-	{{form_end(HotelForm)}}
 {% endblock %}

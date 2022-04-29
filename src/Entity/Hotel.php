@@ -87,6 +87,11 @@ class Hotel
      */
     private $likes;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nb_votes;
+
     public function __construct()
     {
         $this->chambres = new ArrayCollection();
@@ -250,6 +255,18 @@ class Hotel
     public function setLikes(int $likes): self
     {
         $this->likes = $likes;
+
+        return $this;
+    }
+
+    public function getNbVotes(): ?int
+    {
+        return $this->nb_votes;
+    }
+
+    public function setNbVotes(int $nb_votes): self
+    {
+        $this->nb_votes = $nb_votes;
 
         return $this;
     }
