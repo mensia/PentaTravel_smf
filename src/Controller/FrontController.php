@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Agence;
+use App\Entity\Favoriet;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,6 +43,21 @@ class FrontController extends AbstractController
         return $this->render('front/schedual.html.twig', [
             'title' => 'schedual',
             'diff' => $tabDif,
+        ]);
+    }
+    /**
+     * @Route("/fav", name="front_fav")
+     */
+    public function fav(): Response
+    {
+
+        $repository = $this->getDoctrine()->getRepository(Favoriet::class);
+        $tab = $repository->findBy(['user' => 0]);
+
+     
+        return $this->render('front/fav.html.twig', [
+            'title' => 'Fav',
+            'tab' => $tab,
         ]);
     }
 }

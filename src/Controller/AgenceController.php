@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Agence;
-
+use App\Entity\Favoriet;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -62,7 +62,7 @@ class AgenceController extends AbstractController
         // console.log("Message here");
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()&& $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $Agence->setIdProp(0);
 
             $entityManager->persist($Agence);
@@ -78,6 +78,27 @@ class AgenceController extends AbstractController
     }
 
     /**
+     * @Route("/fav/{id}", name="AgenceFav")
+     */
+    public function Fav(
+        $id
+    ): Response {
+        $repository = $this->getDoctrine()->getRepository(Agence::class);
+        $Agence = $repository->find($id);
+        $fav = new Favoriet();
+        $fav->setUser(0);
+        $fav->setAgence($Agence);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($fav);
+
+        $em->flush();
+
+        return $this->redirectToRoute('app_agencef');
+
+    }
+
+    /**
      * @Route ("/update/{id}" , name="agenceUpdate")
      */
     public function update($id, Request $request)
@@ -87,7 +108,7 @@ class AgenceController extends AbstractController
         $form = $this->createForm(AgenceType::class, $Agence);
         $form->add('update', SubmitType::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted()&& $form->isValid() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute('app_agence');

@@ -1,0 +1,36 @@
+{% extends "frontbase.html.twig" %}
+
+{% block body %}
+	<div class="row">
+		{% for row in tab %}
+			<div class="col-lg-3">
+
+				
+				<div class="card">
+					<div class="stat-widget-one">
+						<div class="stat-icon dib">
+							<i class="ti-user color-primary border-primary"></i>
+						</div>
+						<div class="stat-content dib">
+							<div class="stat-text">User id{{row.user}}
+							</div>
+							<div class="stat-digit">Agence {{row.getAgence().getNom()}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+	<link href="{{asset('assets/css/lib/calendar2/pignose.calendar.min.css')}}" rel="stylesheet">
+	<link href="{{asset('assets/css/lib/chartist/chartist.min.css')}}" rel="stylesheet">
+	<link href="{{asset('assets/css/lib/font-awesome.min.css')}}" rel="stylesheet">
+	<link href="{{asset('assets/css/lib/themify-icons.css')}}" rel="stylesheet">
+	<link href="{{asset('assets/css/lib/owl.carousel.min.css')}}" rel="stylesheet">
+	<link href="{{asset('assets/css/lib/owl.theme.default.min.css')}}" rel="stylesheet">
+	<link href="{{asset('assets/css/lib/weather-icons.css')}}" rel="stylesheet">
+	<link href="{{asset('assets/css/lib/menubar/sidebar.css')}}" rel="stylesheet">
+	<link href="{{asset('assets/css/lib/bootstrap.min.css')}}" rel="stylesheet">
+	<link href="{{asset('assets/css/lib/helper.css')}}" rel="stylesheet">
+	<link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+{% endblock %}
