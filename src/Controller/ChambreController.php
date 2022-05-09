@@ -11,7 +11,10 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Form\ChambreType;
 use App\Entity\Chambre;
 use App\Entity\Hotel;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
+
+use Ivory\GoogleMap\Map;
 /**
  * @Route("/chambre")
  */
@@ -46,10 +49,12 @@ class ChambreController extends AbstractController
         ]);
     }
     /**
-     * @Route("/front/{id}", name="chambre_hotelf")
+     * @Route("/frontt/{id}", name="chambre_hotelf")
      */
     public function Chambredhotelf($id): Response
     {
+
+        // $map = new Map();
         // $repository = $this->getDoctrine()->getRepository(Chambre::class);
         // $tab = $repository->findBy(['hotel_id' => $id]);
 
@@ -58,6 +63,8 @@ class ChambreController extends AbstractController
         $tab = $hotel->getChambres();
         return $this->render('chambre/findex.html.twig', [
             'tab' => $tab,
+            'h' => $hotel,
+            'title' => 'Chambre',
         ]);
     }
     /**
@@ -107,7 +114,7 @@ class ChambreController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('app_chambre');
         }
-        return $this->render('chambre/newChambre.html.twig', ['ChambreForm' => $form->createView()]);
+        return $this->render('chambre/new.html.twig', ['ChambreForm' => $form->createView()]);
     }
 
     /**

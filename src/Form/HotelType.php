@@ -6,6 +6,7 @@ use App\Entity\Hotel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use blackknight467\StarRatingBundle\Form\RatingType;
 
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -43,7 +44,10 @@ class HotelType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('nbEtoile')
+            // ->add('nbEtoile')
+            ->add('nbEtoile', RatingType::class, [
+                'label' => 'Rating'
+            ])
             ->add('phone',  TextType::class, array(
                 'required' => true,
                 'attr' => ['pattern' => '/^[0-9]{8}$/', 'maxlength' => 5]

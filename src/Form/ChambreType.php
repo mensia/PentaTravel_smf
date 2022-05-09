@@ -6,7 +6,7 @@ use App\Entity\Chambre;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\RangeType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 class ChambreType extends AbstractType
@@ -17,7 +17,7 @@ class ChambreType extends AbstractType
             ->add('number')
             ->add('prix', TextType::class, array(
                 'required' => true,
-                'attr' => ['pattern' => '/^[0-9]{8}$/', 'maxlength' => 5]
+                'attr' => ['pattern' => '/^[0-9]{8}$/', 'maxlength' => 8]
             ))
             ->add('image')
             ->add('description', null, [
